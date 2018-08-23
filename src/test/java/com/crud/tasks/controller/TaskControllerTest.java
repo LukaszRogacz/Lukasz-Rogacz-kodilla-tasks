@@ -5,6 +5,7 @@ import com.crud.tasks.domain.TaskDto;
 import com.crud.tasks.mapper.TaskMapper;
 import com.crud.tasks.service.DbService;
 import com.google.gson.Gson;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +22,8 @@ import java.util.Optional;
 
 import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -53,7 +56,7 @@ public class TaskControllerTest {
         tasks.add(task);
         tasksDto = new ArrayList<>();
         tasksDto.add(taskDto);
-        gson=new Gson();
+        gson = new Gson();
     }
 
     @Test
@@ -91,7 +94,7 @@ public class TaskControllerTest {
 
         when(dbService.saveTask(task)).thenReturn(task);
         when(taskMapper.mapToTaskDto(task)).thenReturn(taskDto);
-//        when(taskMapper.mapToTask(taskDto)).thenReturn(task);
+        when(taskMapper.mapToTask(taskDto)).thenReturn(task);
 
         //When & Then
         mockMvc.perform(post("/v1/task/createTask")
@@ -99,6 +102,7 @@ public class TaskControllerTest {
                 .characterEncoding("UTF-8")
                 .content(jsonContent))
                 .andExpect(status().isOk());
+        verify(dbService, times(1)).saveTask(task);
     }
 
     @Test
@@ -127,6 +131,7 @@ public class TaskControllerTest {
         //When & Then
         mockMvc.perform(delete("/v1/task/deleteTask?taskId=5"))
                 .andExpect(status().isOk());
+        verify(dbService, times(1)).deleteTask(5L);
 
     }
 
