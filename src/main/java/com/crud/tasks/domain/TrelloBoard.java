@@ -23,9 +23,4 @@ public class TrelloBoard {
                 Objects.equals(getLists(), that.getLists());
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(getId(), getName(), getLists());
-    }
 }

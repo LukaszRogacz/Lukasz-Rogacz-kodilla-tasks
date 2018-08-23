@@ -22,9 +22,5 @@ public class TrelloList {
                 Objects.equals(getName(), that.getName());
     }
 
-    @Override
-    public int hashCode() {
 
-        return Objects.hash(getId(), getName(), isClosed());
-    }
 }

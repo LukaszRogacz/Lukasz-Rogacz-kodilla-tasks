@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.Objects;
 
 @Getter
 @AllArgsConstructor
@@ -21,6 +22,15 @@ public class Task {
     @Column(name="description")
     private String content;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Task)) return false;
+        Task task = (Task) o;
+        return Objects.equals(getId(), task.getId()) &&
+                Objects.equals(getTitle(), task.getTitle()) &&
+                Objects.equals(getContent(), task.getContent());
+    }
 
 
 }

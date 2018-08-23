@@ -25,9 +25,5 @@ public class TrelloCard {
                 Objects.equals(getListId(), that.getListId());
     }
 
-    @Override
-    public int hashCode() {
 
-        return Objects.hash(getName(), getDescription(), getPos(), getListId());
-    }
 }
