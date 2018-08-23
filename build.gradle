@@ -44,4 +44,5 @@ dependencies {
 	//providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 
 	compile('com.google.code.gson:gson:2.3.1')
+	compile ('org.springframework.boot:spring-boot-starter-actuator')
 }
