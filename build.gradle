@@ -41,8 +41,13 @@ dependencies {
 //	Swagger
 	compile('io.springfox:springfox-swagger2:2.7.0')
 	compile('io.springfox:springfox-swagger-ui:2.7.0')
+
 	//providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 
 	compile('com.google.code.gson:gson:2.3.1')
 	compile ('org.springframework.boot:spring-boot-starter-actuator')
+
+	//thymeleaf
+	compile ('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile group: 'net.sourceforge.nekohtml', name: 'nekohtml', version: '1.9.22'
 }
