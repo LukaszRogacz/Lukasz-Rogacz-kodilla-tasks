@@ -69,10 +69,9 @@ public class MailCreatorService {
         context.setVariable("tasks_url","https://lukaszrogacz.github.io/");
         context.setVariable("button","Visit website");
         context.setVariable("admin_config",adminConfig);
-        context.setVariable("goodbye","Best Regards," +
-                "\nElton John");
-        context.setVariable("company",companyConfig.getCompanyName()+"\n" +
-                "email: "+companyConfig.getCompanyEmail()+"\n" +
+        context.setVariable("goodbye","Best Regards," +"<br/>Elton John");
+        context.setVariable("company",companyConfig.getCompanyName()+"<br/>" +
+                "email: "+companyConfig.getCompanyEmail()+"<br/>" +
                 "company phone: "+companyConfig.getCompanyPhone());
         context.setVariable("show_button",true);
         context.setVariable("is_friend",false);
